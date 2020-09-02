@@ -114,7 +114,12 @@ while pages_left:
     print(f'> got {len(chron_items)} articles on page')
     collected_data = []
     for item in chron_items:
-        item_url = item.select_one('h2 a')['href']
+        headline_elem = item.select_one('h2 a')
+        if not headline_elem:
+            print('> no headline for this item; skipping')
+            continue
+
+        item_url = headline_elem['href']
 
         if df is not None and item_url in set(df['url']):
             print(f'> already fetched data from {item_url}; skipping')
