@@ -1,3 +1,11 @@
+"""
+Scraper für Chronik von antisemitischen Vorfällen publiziert von der Amadeu Antonio Stiftung unter
+https://www.amadeu-antonio-stiftung.de/chronik/.
+
+Autor: Markus Konrad <markus.konrad@wzb.eu>
+Datum: 2. Sept. 2020
+"""
+
 from time import sleep
 import os
 import json
@@ -6,13 +14,13 @@ import requests
 from bs4 import BeautifulSoup
 import pandas as pd
 
-#%%
+#%% constants
 
-SLEEPTIME_SEC = 1     # delay between requests
-MAX_PAGES = None         # set for debugging; otherwise set to None
-OUTPUT_CSV = 'collected_data.csv'
+SLEEPTIME_SEC = 1                   # delay between requests
+MAX_PAGES = None                    # set for debugging; otherwise set to None
+OUTPUT_CSV = 'collected_data.csv'   # final output
 
-#%%
+#%% functions
 
 def fetch_page(pagenum):
     postdata = {
@@ -84,7 +92,7 @@ def fetch_article(url):
     return data
 
 
-#%%
+#%% main routine
 
 if os.path.exists(OUTPUT_CSV):
     print(f'loading already existing data from {OUTPUT_CSV}')
