@@ -53,8 +53,13 @@ def fetch_article(url):
     data['title'] = fullarticle.select_one('h1').text
 
     author_elem = fullarticle.select_one('span.author')
-    data['author'] = author_elem.text
-    data['author_url'] = author_elem.select_one('a')['href']
+
+    if author_elem:
+        data['author'] = author_elem.text
+        data['author_url'] = author_elem.select_one('a')['href']
+    else:
+        data['author'] = None
+        data['author_url'] = None
 
     postedon_elem = fullarticle.select_one('span.posted-on')
     data['date'] = postedon_elem.select_one('time')['datetime']
