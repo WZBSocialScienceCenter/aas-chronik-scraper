@@ -1,5 +1,5 @@
 """
-Scraper für Chronik von antisemitischen Vorfällen publiziert von der Amadeu Antonio Stiftung unter
+Web-Scraper für Chronik von antisemitischen Vorfällen erstellt von der Amadeu Antonio Stiftung und publiziert unter
 https://www.amadeu-antonio-stiftung.de/chronik/.
 
 Autor: Markus Konrad <markus.konrad@wzb.eu>
